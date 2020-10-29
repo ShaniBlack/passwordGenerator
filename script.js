@@ -42,38 +42,8 @@ function getPasswordOptions() {
   let outputInfo = outputArray.join("");
   return outputInfo;
 
-
-
-  // let criteria = {
-  //   length: passwordLength,
-  //   lower: wantsLower,
-  //   upper: wantsUpper,
-  //   special: wantsSpecial,
-  //   number: wantsNumber
-  // }
-  //  return criteria
-   
-       
-   }
   
-  
-  // function getRandom(arr) {
-  //   for (let i = 0; i < array.length; i++) {
-  //     const element = array[i];
-      
-  //   }
-  //  let randomIndex = Math.floor(Math.random()*arr.length)
-  //  return arr[randomIndex]
-  // }
-
-// function generatePassword() {
-//   let result = [];
-//   let possibleCharacters = [];
-//   let guaranteedCharacters = [];
-//   let options = getPasswordOptions();
-//   // to access length do options.length then if statements
-// }
-
+}
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
@@ -88,6 +58,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
