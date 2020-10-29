@@ -3,50 +3,84 @@ let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 let specialChar = "!@#$%^&*()".split("");
 let numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+let pwdArray = []
+
 function getPasswordOptions() {
   let passwordLength = prompt("How long would you like your password to be?")
   if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     alert("Must select a number between 8 and 128. Try again!")
     return
   }
-  let wantsLower = confirm("Do you want to include lower case letters?");
-  let wantsUpper = confirm("Do you want to include upper case letters?");
-  let wantsSpecial = confirm("Do you want to include special characters?");
-  let wantsNumber = confirm("Do you want to include numbers?");
+  let wantsLower = confirm("Do you want to include lower case letters?")
+  if (wantsLower === true) {
+    pwdArray =  pwdArray.concat(lowerCase)
+  }
+  let wantsUpper = confirm("Do you want to include upper case letters?")
+  if (wantsUpper === true) {
+    pwdArray = pwdArray.concat(upperCase)
+  }
+  let wantsSpecial = confirm("Do you want to include special characters?")
+  if (wantsSpecial === true) {
+    pwdArray =  pwdArray.concat(specialChar)
+  }
+  let wantsNumber = confirm("Do you want to include numbers?")
+  if (wantsNumber === true) {
+    pwdArray =  pwdArray.concat(numberArray)
+  }
+
   if (wantsLower === false && wantsUpper === false && wantsSpecial === false && wantsNumber === false) {
     alert("Please select at least one option.")
     return
   }
-  let criteria = {
-    length: passwordLength,
-    lower: wantsLower,
-    upper: wantsUpper,
-    special: wantsSpecial,
-    number: wantsNumber
+  let outputArray = [];
+
+  for (let i = 0; i < passwordLength; i++) {
+    let pickInput = pwdArray[Math.floor(Math.random()*pwdArray.length)];
+    outputArray.push(pickInput);
   }
-   return criteria
-}
 
-function getRandom(arr) {
- let randomIndex = Math.floor(Math.random()*arr.length)
- return arr[randomIndex]
-}
+  let outputInfo = outputArray.join("");
+  return outputInfo;
 
-function generatePassword() {
-  let result = [];
-  let possibleCharacters = [];
-  let guaranteedCharacters = [];
-  let options = getPasswordOptions();
-  // to access length do options.length then if statements
-}
+
+
+  // let criteria = {
+  //   length: passwordLength,
+  //   lower: wantsLower,
+  //   upper: wantsUpper,
+  //   special: wantsSpecial,
+  //   number: wantsNumber
+  // }
+  //  return criteria
+   
+       
+   }
+  
+  
+  // function getRandom(arr) {
+  //   for (let i = 0; i < array.length; i++) {
+  //     const element = array[i];
+      
+  //   }
+  //  let randomIndex = Math.floor(Math.random()*arr.length)
+  //  return arr[randomIndex]
+  // }
+
+// function generatePassword() {
+//   let result = [];
+//   let possibleCharacters = [];
+//   let guaranteedCharacters = [];
+//   let options = getPasswordOptions();
+//   // to access length do options.length then if statements
+// }
 
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = getPasswordOptions();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
