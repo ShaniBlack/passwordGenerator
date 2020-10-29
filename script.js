@@ -3,11 +3,8 @@ let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 let specialChar = "!@#$%^&*()".split("");
 let numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-let pwdArray = [];
-
-
 function getPasswordOptions() {
-  let passwordLength = parseInt(prompt("How long would you like your password to be?")
+  let passwordLength = prompt("How long would you like your password to be?")
   if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     alert("Must select a number between 8 and 128. Try again!")
     return
@@ -20,48 +17,28 @@ function getPasswordOptions() {
     alert("Please select at least one option.")
     return
   }
-  if (wantsLower === true) {
-    (pwdArray.push(lowerCase));
+  let criteria = {
+    length: passwordLength,
+    lower: wantsLower,
+    upper: wantsUpper,
+    special: wantsSpecial,
+    number: wantsNumber
   }
-  if (wantsUpper === true) {
-    (pwdArray.push(upperCase));
-  }
-  if (wantsSpecial === true) {
-    (pwdArray.push(specialChar));
-  }
-  if (wantsNumber === true) {
-    (pwdArray.push(numberArray))
-  }
-
-//   let criteria = {
-//     length: passwordLength,
-//     lower: wantsLower,
-//     upper: wantsUpper,
-//     special: wantsSpecial,
-//     number: wantsNumber
-//   }
-//    return criteria
-// }
-
-// let getRandom 
+   return criteria
+}
 
 function getRandom(arr) {
  let randomIndex = Math.floor(Math.random()*arr.length)
  return arr[randomIndex]
-
 }
 
-// function generatePassword() {
-  
-  
-  }
-  // 
-// getRandom(lowerCase);
-// getRandom(upperCase);
-// getRandom(specialChar);
-// getRandom(numberArray);
-
-
+function generatePassword() {
+  let result = [];
+  let possibleCharacters = [];
+  let guaranteedCharacters = [];
+  let options = getPasswordOptions();
+  // to access length do options.length then if statements
+}
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -77,3 +54,6 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
